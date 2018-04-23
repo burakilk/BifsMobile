@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name" translatable="false">BIFS</string>
+    <string name="btn_restore" translatable="false">Şifre Yenile</string>
+    <string name="btn_register" translatable="false">Kayıt</string>
+    <string name="hint_et_email" translatable="false">Email</string>
+    <string name="hint_shop_add" translatable="false">Ürün Adı</string>
+    <string name="hint_shop_qty" translatable="false">Ürün Adedi/Kilosu</string>
+    <string name="btn_shop_add" translatable="false">Ekle</string>
+    <string name="loading" translatable="false">Yükleniyor</string>
+    <string name="hint_et_pass" translatable="false">Şifre</string>
+    <string name="checkbox_remember" translatable="false">Beni Hatırla</string>
+    <string name="btn_login" translatable="false">Giriş</string>
+    <string name="tv_restore">Şifereni mi Unuttun ? </string>
+    <string name="btn_facebook" translatable="false">Facebook Giriş</string>
+    <string name="btn_google" translatable="false">Google Giriş</string>
+    <string name="tv_register" translatable="false">Hesabın yok mu? Kayıt Ol.</string>
+    <string name="hint_et_name" translatable="false">İsim</string>
+    <string name="label_register_activity" translatable="false">Kayıt</string>
+    <string name="label_restore_activity" translatable="false">Şifre Yenile</string>
+
+    <string name="fb_login_success" translatable="false">Facebook İle Başarıyla Giriş Yaptınız!</string>
+    <string name="login_fail" translatable="false">Giriş Hatası</string>
+    <string name="google_login_success" translatable="false">Google İle Başarıyla Giriş Yaptınız!</string>
+    <string name="email_login_success" translatable="false">Giriş Başarılı!</string>
+    <string name="register_success" translatable="false">Kayıt Başarılı!</string>
+    <string name="register_fail" translatable="false">Hatalı Kayıt</string>
+    <string name="error_email" translatable="false">Email Adresini Giriniz.</string>
+    <string name="error_pass" translatable="false">Şifre Giriniz.</string>
+    <string name="restore_email_sent" translatable="false">Lütfen Şifre Yenileme Linki İçin Mail Adresini Kontrol Ediniz.</string>
+    <string name="restore_email_fail" translatable="false">Şifre Yenileme Linki Gönderilmedi!</string>
+    <string name="facebook_app_id">205089740233972</string>
+    <string name="fb_login_protocol_scheme">b1e6738bcd32ae0b38e8998dc61ee795</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Ayarlar</string>
+    <string name="logout">Çıkış</string>
+    <string name="title_activity_shop">shop</string>
+    <string name="hint_et_shop">Ürün Adı</string>
+    <string name="hint_et_pass_change">Şifre Değiştir</string>
+    <string name="btn_pass_change">Kaydet</string>
+    <string name="hint_et_qty">Ürün Miktarı/Kilosu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="menu_delete">Sil</string>
+    <string-array name="sports_array">
+        <item>Shuttle Badminton</item>
+        <item>Tennis</item>
+        <item>Table Tennis</item>
+        <item>Basket Ball</item>
+        <item>Foot Ball</item>
+        <item>Volley Ball</item>
+        <item>Hockey</item>
+        <item>Swimming</item>
+
+        <item>Shuttle Badminton 2</item>
+        <item>Tennis 2</item>
+        <item>Table Tennis 2</item>
+        <item>Basket Ball 2</item>
+        <item>Foot Ball 2</item>
+        <item>Volley Ball 2</item>
+        <item>Hockey 2</item>
+        <item>Swimming 2</item>
+
+        <item>Shuttle Badminton 3</item>
+        <item>Tennis 3</item>
+        <item>Table Tennis 3</item>
+        <item>Basket Ball 3</item>
+        <item>Foot Ball 3</item>
+        <item>Volley Ball 3</item>
+        <item>Hockey 3</item>
+        <item>Swimming 3</item>
+
+        <item>Shuttle Badminton 4</item>
+        <item>Tennis 4</item>
+        <item>Table Tennis 4</item>
+        <item>Basket Ball 4</item>
+        <item>Foot Ball 4</item>
+        <item>Volley Ball 4</item>
+        <item>Hockey 4</item>
+        <item>Swimming 4</item>
+
+        <item>Shuttle Badminton 5</item>
+        <item>Tennis 5</item>
+        <item>Table Tennis 5</item>
+        <item>Basket Ball 5</item>
+        <item>Foot Ball 5</item>
+        <item>Volley Ball 5</item>
+        <item>Hockey 5</item>
+        <item>Swimming 5</item>
+    </string-array>
+</resources>

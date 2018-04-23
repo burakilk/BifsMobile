@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home"
+            android:title="Anasayfa " />
+        <item
+            android:id="@+id/user_profile"
+            android:icon="@drawable/profile"
+            android:title="Profil" />
+        <item
+            android:id="@+id/alisveris_sepeti_listele"
+            android:icon="@drawable/basket"
+            android:title="Alışveriş Sepeti Listele" />
+        <item
+            android:id="@+id/recipe"
+            android:icon="@drawable/recipe"
+            android:title="Tarif Ekle" />
+        <item
+            android:id="@+id/recipeList"
+            android:icon="@drawable/recipelist"
+            android:title="Tarif Listele" />
+        <item
+            android:id="@+id/storage"
+            android:icon="@drawable/fridge"
+            android:title="Dolabım" />
+        <item
+            android:id="@+id/photo"
+            android:icon="@drawable/image"
+            android:title="Anlık Fotoğraf" />
+    </group>
+
+</menu>
