@@ -117,25 +117,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
         final long ONE_MEGABYTE = 1024 * 1024;
-       /* ref = FirebaseStorage.getInstance().getReference(user.getUid().toString());
-       
-            //download file as a byte array
-
-            ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    Toast.makeText(MainActivity.this, bytes.length, Toast.LENGTH_SHORT).show();
-                    photo.setImageBitmap(bitmap);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    photo.setVisibility(View.INVISIBLE);
-                }
-            });
-*/
         email.setText(user.getEmail());
 
 
@@ -256,7 +237,7 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-        
+
         else if(id == R.id.stock)
         {
             FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();

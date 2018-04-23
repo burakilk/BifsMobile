@@ -21,6 +21,7 @@ import com.androidbuts.multispinnerfilter.SingleSpinner;
 import com.androidbuts.multispinnerfilter.SingleSpinnerSearch;
 import com.androidbuts.multispinnerfilter.SpinnerListener;
 import com.androilk.bifs.Class.Post;
+import com.androilk.bifs.Class.PostRecipe;
 import com.androilk.bifs.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,6 +47,7 @@ public class Recipe extends Fragment {
     private static final String TAG = "RecipeAdd";
     private static final String REQUIRED = "Required";
     DatabaseReference mDatabase;
+    List<String> products_id;
     EditText etRecipe;
     EditText etDescription;
     Button btnRecipeAdd;
@@ -67,6 +69,7 @@ public class Recipe extends Fragment {
         btnRecipeAdd = (Button) getView().findViewById(R.id.btnRecipeAdd);
         final List<String> querys = new ArrayList<>();
         final List<String> queryids = new ArrayList<>();
+        products_id = new ArrayList<>();
         final List<KeyPairBoolData> listArray0 = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         final MultiSpinnerSearch searchMultiSpinnerUnlimited = (MultiSpinnerSearch)getView().findViewById(R.id.searchMultiSpinnerUnlimited);
@@ -109,6 +112,7 @@ public class Recipe extends Fragment {
                 for (int i = 0; i < items.size(); i++) {
                     if (items.get(i).isSelected()) {
                         Log.i(TAG, i + " : " + items.get(i).getId() + " : " + items.get(i).getName());
+                        products_id.add(String.valueOf(items.get(i).getId()));
                     }
                 }
             }
@@ -152,7 +156,7 @@ public class Recipe extends Fragment {
 
                         }else {
                             // Write new post
-                            writeNewPost(userId, user.getEmail(), title, body);
+                            writeNewPost(userId, user.getEmail(), title, body, (List<String>) products_id);
                             Toast.makeText(getContext(), "Tarif Eklendi.", Toast.LENGTH_SHORT).show();
                             hideProgressDialog();
                         }
@@ -191,11 +195,11 @@ public class Recipe extends Fragment {
     }
 
 
-    private void writeNewPost(String userId, String username, String title, String body) {
+    private void writeNewPost(String userId, String username, String title, String body,List<String> products_id) {
 
         String key = mDatabase.child("posts").push().getKey();
-        Post post = new Post(userId, username, title, body);
-        Map<String, Object> postValues = post.toMap();
+        PostRecipe postRecipe = new PostRecipe(userId, username, title, body,products_id);
+        Map<String, Object> postValues = postRecipe.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/user-recipe-list/" + userId + "/" + key, postValues);
