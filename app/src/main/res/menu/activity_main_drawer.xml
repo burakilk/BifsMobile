@@ -22,6 +22,11 @@
             android:id="@+id/recipeList"
             android:icon="@drawable/recipelist"
             android:title="Tarif Listele" />
+
+        <item
+            android:id="@+id/recipeSearch"
+            android:icon="@drawable/recipesearch"
+            android:title="Tarif Ara" />
         <item
             android:id="@+id/storage"
             android:icon="@drawable/fridge"

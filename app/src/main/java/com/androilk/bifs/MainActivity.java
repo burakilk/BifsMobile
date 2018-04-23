@@ -26,6 +26,7 @@ import com.androilk.bifs.fragment.Home;
 import com.androilk.bifs.fragment.Photo;
 import com.androilk.bifs.fragment.Recipe;
 import com.androilk.bifs.fragment.RecipeList;
+import com.androilk.bifs.fragment.RecipeSearching;
 import com.androilk.bifs.fragment.Setting;
 import com.androilk.bifs.fragment.ShopAdd;
 import com.androilk.bifs.fragment.ShopList;
@@ -254,6 +255,17 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction2.addToBackStack(null);
             fragmentTransaction2.commit();
             Toast.makeText(this, "Tarif Listele", Toast.LENGTH_SHORT).show();
+
+        }
+
+        else if(id == R.id.recipeSearch)
+        {
+            FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
+            RecipeSearching recipeSearch = new RecipeSearching();
+            fragmentTransaction2.replace(R.id.container, recipeSearch);
+            fragmentTransaction2.addToBackStack(null);
+            fragmentTransaction2.commit();
+            Toast.makeText(this, "Tarif Ara", Toast.LENGTH_SHORT).show();
 
         }
         else if(id == R.id.storage)
