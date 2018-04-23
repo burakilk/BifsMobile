@@ -58,26 +58,19 @@ public class fridge_fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         arrayList = new ArrayList<>();
         ids = new ArrayList<>();
-        listView = (ListView) getView().findViewById(R.id.sensorList);
+        listView =  getView().findViewById(R.id.sensorList);
         registerForContextMenu(listView);
-
         user = mAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        String myUserId = user.getUid();
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.fridge_layout, R.id.tvlist, this.arrayList);
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference sen = mDatabase.child("sensors");
-
         sen.addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if(user.getEmail().equals(snapshot.child("user_email").getValue().toString())) {
+                    if(user.getEmail().equals(String.valueOf(snapshot.child("user_email").getValue()))) {
                         ids.add(snapshot.child("id").getValue().toString());
                         arrayAdapter.add(snapshot.child("name").getValue().toString());
-
                     }
                 }
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,13 +78,10 @@ public class fridge_fragment extends Fragment {
                     public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
                         // TODO Auto-generated method stub
                         Log.i("ids", ids.get(position));
-
                         Bundle bundle=new Bundle();
                         bundle.putString("id", ids.get(position));
-
                         SensorDescription sensorDescription = new SensorDescription();
                         sensorDescription.setArguments(bundle);
-
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.container, sensorDescription);
                         transaction.commit();
@@ -102,29 +92,10 @@ public class fridge_fragment extends Fragment {
 
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long arg3) {
-                       /* DatabaseReference userpost = mDatabase.child("user-posts");
-                        DatabaseReference post = userpost.child(user.getUid());
-                        Log.i("ids", ids.get(position));
-                        arrayAdapter.remove(arrayList.get(position));
-                        arrayAdapter.notifyDataSetChanged();
-                        post.child(ids.get(position)).removeValue();
-                        FragmentManager fragmentManager;
-                        fragmentManager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
-                        ShopList shopList = new ShopList();
-                        fragmentTransaction2.replace(R.id.container, shopList);
-                        fragmentTransaction2.addToBackStack(null);
-                        fragmentTransaction2.commit();*/
 
                         return false;
                     }
                 });
-              /*  listView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });*/
 
             }
 
@@ -149,28 +120,6 @@ public class fridge_fragment extends Fragment {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        /*switch (item.getItemId()) {
-            case R.id.delete:
-                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.recipelist, R.id.tvlist, this.arrayList);
-                AdapterView.AdapterContextMenuInfo information = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                int index = information.position;
-                DatabaseReference userpost = mDatabase.child("user-recipe-list");
-                DatabaseReference post = userpost.child(user.getUid());
-                Log.i("ids", ids.get(index));
-                arrayAdapter.remove(arrayList.get(index));
-                post.child(ids.get(index)).removeValue();
-                FragmentManager fragmentManager;
-                fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
-                RecipeList recipeList = new RecipeList();
-                fragmentTransaction2.replace(R.id.container, recipeList);
-                fragmentTransaction2.addToBackStack(null);
-                fragmentTransaction2.commit();
-                Toast.makeText(getContext(), "Başarıyla Silindi.", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }*/
         return super.onContextItemSelected(item);}
 
 }

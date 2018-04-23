@@ -4,6 +4,7 @@ package com.androilk.bifs.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androilk.bifs.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -62,9 +64,8 @@ public class SensorDescription extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         txtSensorName = (TextView) getView().findViewById(R.id.txtSensorName);
-        // txtSensorContent = (TextView) getView().findViewById(R.id.txtSensorContent);
         txtSensorContent = view.findViewById(R.id.txtSensorContent);
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
         urun_id =  new ArrayList<>();
         urun_adi =  new ArrayList<>();
         btn_Kaydet = getView().findViewById(R.id.btn_Kaydet);
@@ -75,9 +76,27 @@ public class SensorDescription extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 txtSensorName.setText(dataSnapshot.child("name").getValue().toString());
-                urun_id.add(dataSnapshot.child("urun_id").getValue().toString());
-                urun_adi.add(dataSnapshot.child("urun_adi").getValue().toString());
                 txtSensorContent.setText(dataSnapshot.child("urun_adi").getValue().toString());
+                urun_adi.add(txtSensorContent.getText().toString());
+                urun_id.add((String) getProductKey(txtSensorContent.getText().toString()));
+                btn_Kaydet.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        DatabaseReference kayitRef = db.getReference("sensors").child(bundle.getString("id")).child("urun_adi");
+                        DatabaseReference kayitRef2 = db.getReference("sensors").child(bundle.getString("id")).child("urun_id");
+                        //Toast.makeText(getContext(), (String) getProductKey(txtSensorContent.getText().toString()), Toast.LENGTH_SHORT).show();
+                        kayitRef.setValue(txtSensorContent.getText().toString());
+                        kayitRef2.setValue( (String) getProductKey(txtSensorContent.getText().toString()));
+                        fridge_fragment fridge_fragment = new fridge_fragment();
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, fridge_fragment);
+                        transaction.commit();
+                        Toast.makeText(getContext(), "Başarıyla Kaydedildi.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -85,6 +104,8 @@ public class SensorDescription extends Fragment {
             }
 
         });
+
+
 
         products = new ArrayList();
         db = FirebaseDatabase.getInstance();
@@ -119,15 +140,20 @@ public class SensorDescription extends Fragment {
             }
 
 
-
         });
-        btn_Kaydet.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                DatabaseReference kayitRef = db.getReference("sensors").child(urun_id.get(0));
-               kayitRef.setValue(urun_adi.get(0));
-            }
-        });
         }
+    public Object getProductKey(Object product){
+
+
+
+        for(Object o : map.keySet()){
+            if(map.get(o).equals(product))
+                return o;
+        }
+
+        return null;
     }
+
+
+}
