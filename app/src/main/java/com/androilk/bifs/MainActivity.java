@@ -1,14 +1,10 @@
 package com.androilk.bifs;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,13 +25,10 @@ import com.androilk.bifs.fragment.RecipeList;
 import com.androilk.bifs.fragment.Setting;
 import com.androilk.bifs.fragment.ShopAdd;
 import com.androilk.bifs.fragment.ShopList;
-import com.androilk.bifs.fragment.StockAdd;
+import com.androilk.bifs.fragment.Stock;
 import com.androilk.bifs.fragment.UserProfile;
 import com.androilk.bifs.fragment.fridge_fragment;
 import com.androilk.bifs.login.LoginScreen;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,11 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.List;
 
 /**
  * Created by FBI on 3.02.2018.
@@ -267,17 +256,18 @@ public class MainActivity extends AppCompatActivity
 
 
         }
-
-        else if(id == R.id.photo)
+        
+        else if(id == R.id.stock)
         {
             FragmentTransaction fragmentTransaction2 = fragmentManager.beginTransaction();
-            Photo photo = new Photo();
-            fragmentTransaction2.replace(R.id.container, photo);
+            Stock stock = new Stock();
+            fragmentTransaction2.replace(R.id.container, stock);
             fragmentTransaction2.addToBackStack(null);
             fragmentTransaction2.commit();
-            Toast.makeText(this, "Photo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Stoğum", Toast.LENGTH_SHORT).show();
 
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
