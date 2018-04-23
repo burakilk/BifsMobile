@@ -32,9 +32,9 @@
             android:icon="@drawable/fridge"
             android:title="Dolabım" />
         <item
-            android:id="@+id/photo"
+            android:id="@+id/stock"
             android:icon="@drawable/image"
-            android:title="Anlık Fotoğraf" />
+            android:title="Stoklarım" />
     </group>
 
 </menu>

@@ -40,6 +40,15 @@
                 android:textSize="@dimen/text_medium"
                 android:inputType="textMultiLine"/>
 
+
+            <TextView
+                android:id="@+id/etDescriptionProduct"
+                android:layout_width="match_parent"
+                android:layout_height="365dp"
+                android:hint="Tarif İçeriği"
+                android:textSize="@dimen/text_medium"
+                android:inputType="textMultiLine"/>
+
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
