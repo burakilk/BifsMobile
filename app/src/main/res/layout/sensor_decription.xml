@@ -49,4 +49,10 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_Kaydet"
+        android:layout_width="319dp"
+        android:layout_height="wrap_content"
+        android:text="Kaydet" />
+
 </LinearLayout>

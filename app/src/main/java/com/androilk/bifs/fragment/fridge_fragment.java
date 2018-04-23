@@ -56,7 +56,6 @@ public class fridge_fragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         arrayList = new ArrayList<>();
         ids = new ArrayList<>();
         listView = (ListView) getView().findViewById(R.id.sensorList);

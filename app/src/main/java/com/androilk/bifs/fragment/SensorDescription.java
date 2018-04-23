@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,10 +28,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by ilkim celik on 27.02.2018.
- */
-
 public class SensorDescription extends Fragment {
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -40,11 +37,14 @@ public class SensorDescription extends Fragment {
     DatabaseReference productRef, tempRef;
     List<String> arrayList;
     List<String> ids;
+    List<String> urun_id;
+      List<String> urun_adi;
     ArrayList products;
     String productsArray[];
     ListView listView;
     Map<String, String> map;
     AutoCompleteTextView Liste;
+    Button btn_Kaydet;
     private TextView txtSensorName;
     //private TextView txtSensorContent;
 
@@ -54,6 +54,7 @@ public class SensorDescription extends Fragment {
         map = new HashMap<String, String>();
         View v = inflater.inflate(R.layout.sensor_decription, container, false);
         Liste = v.findViewById(R.id.txtSensorContent);
+        btn_Kaydet = v.findViewById(R.id.btn_Kaydet);
 
         return v;
     }
@@ -64,6 +65,9 @@ public class SensorDescription extends Fragment {
         // txtSensorContent = (TextView) getView().findViewById(R.id.txtSensorContent);
         txtSensorContent = view.findViewById(R.id.txtSensorContent);
         Bundle bundle = getArguments();
+        urun_id =  new ArrayList<>();
+        urun_adi =  new ArrayList<>();
+        btn_Kaydet = getView().findViewById(R.id.btn_Kaydet);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference sensors = mDatabase.child("sensors");
         DatabaseReference id = sensors.child(bundle.getString("id"));
@@ -71,6 +75,8 @@ public class SensorDescription extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 txtSensorName.setText(dataSnapshot.child("name").getValue().toString());
+                urun_id.add(dataSnapshot.child("urun_id").getValue().toString());
+                urun_adi.add(dataSnapshot.child("urun_adi").getValue().toString());
                 txtSensorContent.setText(dataSnapshot.child("urun_adi").getValue().toString());
             }
             @Override
@@ -111,5 +117,17 @@ public class SensorDescription extends Fragment {
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
             }
+
+
+
         });
-    }}
+        btn_Kaydet.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                DatabaseReference kayitRef = db.getReference("sensors").child(urun_id.get(0));
+               kayitRef.setValue(urun_adi.get(0));
+            }
+        });
+        }
+    }

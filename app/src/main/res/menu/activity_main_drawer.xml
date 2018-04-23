@@ -15,7 +15,7 @@
             android:icon="@drawable/basket"
             android:title="Alışveriş Sepeti Listele" />
         <item
-            android:id="@+id/recipe" 
+            android:id="@+id/recipe"
             android:icon="@drawable/recipe"
             android:title="Tarif Ekle" />
         <item
